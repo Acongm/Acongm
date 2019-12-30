@@ -1,5 +1,25 @@
-function greeter (person: string) {
-	return 'Hello ' + person;
+class User {
+	fullName: string
+	firstName: string
+	lastName: string
+
+	constructor(firstName: string, lastName: string) {
+		this.firstName = firstName
+		this.lastName = lastName
+		this.fullName = firstName + ' ' + lastName
+	}
+
 }
-let user = 'Yes';
-console.log(greeter(user))
+
+// 接口
+interface Person {
+	firstName: string,
+	lastName: string
+}
+
+function greeter (person: Person) {
+	return 'Hello ' + person.firstName + person.lastName;
+}
+let user = new User('Yee', 'Huang')
+console.log(greeter(user));
+
