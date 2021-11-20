@@ -24,7 +24,7 @@ jobs:
       - name: Install and eslint
         run: |
           npm install
-          npm run lint
+          npm run-script lint
   build-and-deploy:
     # 服务器环境：最新版 ubuntu
     runs-on: ubuntu-latest
