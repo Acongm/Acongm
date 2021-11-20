@@ -21,10 +21,10 @@ jobs:
         with:
           persist-credentials: false
       # 打包静态文件
-      - name: Install and Build
+      - name: Install and eslint
         run: |
-          yarn install
-          yarn lint
+          npm install
+          npm run lint
   build-and-deploy:
     # 服务器环境：最新版 ubuntu
     runs-on: ubuntu-latest
