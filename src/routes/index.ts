@@ -1,11 +1,17 @@
 import loadable from '@loadable/component'
 import Layout, { H5Layout } from '@/layouts'
 import { RouteConfig } from 'react-router-config'
+import App from '@/pages/app'
 import Home from '@/pages/home'
 
 const routesConfig: RouteConfig[] = [
   {
     path: '/',
+    exact: true,
+    component: App
+  },
+  {
+    path: '/home',
     exact: true,
     component: Home
   },
