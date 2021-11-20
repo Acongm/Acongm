@@ -9,6 +9,18 @@ import dotenv from 'dotenv'
 import { minifyHtml } from 'vite-plugin-html'
 
 const config: UserConfigExport = {
+  // base: './',
+  build: {
+    // outDir: 'viteReact'
+    assetsDir: 'static/img/',
+    rollupOptions: {
+      output: {
+        chunkFileNames: 'static/js/[name]-[hash].js',
+        entryFileNames: 'static/js/[name]-[hash].js',
+        assetFileNames: 'static/[ext]/[name]-[hash].[ext]'
+      }
+    }
+  },
   plugins: [
     reactRefresh(),
     legacy({
@@ -75,13 +87,16 @@ export default ({ command, mode }: ConfigEnv) => {
   }
 
   const isBuild = command === 'build'
-  // const base = isBuild ? process.env.VITE_STATIC_CDN : '//localhost:3000/'
+  const base = isBuild ? process.env.VITE_STATIC_CDN : './'
 
-  config.base = process.env.VITE_STATIC_CDN
+  console.log(base)
+
+  config.base = base
 
   if (isBuild) {
     // 压缩 Html 插件
     config.plugins = [...plugins, minifyHtml()]
+
     config.define = {
       'process.env.NODE_ENV': '"production"'
     }
