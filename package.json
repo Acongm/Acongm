@@ -7,7 +7,7 @@
     "build:dev": "tsc && vite build -m qa",
     "serve": "vite preview",
     "build:github": "cross-env BUILD_ENV=/Acongm/ npm run build",
-    "lint": "prettier --write **/*.{js,ts,scss,md,json}",
+    "lint": "eslint --ext js,ts,tsx src",
     "lint:lint-staged": "lint-staged",
     "postinstall": "husky install",
     "commit": "git-cz",
